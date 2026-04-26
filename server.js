@@ -34,10 +34,7 @@ const PORT = process.env.PORT || 5000;
 
 const start = async () => {
   await connectDB();
-  const existingAdmin = await Admin.findOne({ email: "admin@canteen.com" });
-if (existingAdmin) { console.log("Already seeded, skipping."); return; }
-
-  await seedData();   // force reinit — drops old collections and reseeds fresh
+  await seedData();
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 };
 
